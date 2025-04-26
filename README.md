@@ -47,6 +47,27 @@ Aplicación web para análisis de sentimiento (positivo/negativo/neutral) usando
    ```
 
 ---
+# Diagrama de Arquitectura (Mermaid)
+
+```mermaid
+graph TD
+    A[Frontend\nHTML/CSS/JS] -->|POST /procesar| B[Backend\nFlask/Python]
+    B -->|predict_sentiment()| C[Modelo\nNaiveBayes]
+    C -->|Carga| D[(Dataset\ntwitter_training.csv)]
+    C -->|Usa| E[(Stopwords)]
+    B -->|JSON Response| A
+
+    classDef front fill:#E1F5FE,stroke:#0288D1
+    classDef back fill:#E8F5E9,stroke:#388E3C
+    classDef model fill:#FFF8E1,stroke:#FFA000
+    classDef data fill:#F5F5F5,stroke:#616161,dashed
+
+    class A front
+    class B back
+    class C model
+    class D,E data
+```
+---
 
 ## **Arquitectura**  
 - **Frontend**: HTML/CSS/JS (interfaz simple).  
